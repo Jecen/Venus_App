@@ -97,6 +97,10 @@ android {
     compileSdkVersion 23
     buildToolsVersion '25.0.0'
 
+    lintOptions{
+        abortOnError false
+    }
+
     defaultConfig {
         applicationId "com.venus"
         minSdkVersion 16
@@ -137,6 +141,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-splash-screen')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
