@@ -47,10 +47,12 @@ export default SwitchNavigator(
 #### ios
 * 打开 <code>root/ios/[APP_NAME]/Images.xcassets/LaunchImage(-[x]).launchimage</code> 下的 <code>Contents.json</code> 文件
 * 根据 <code>Contents.json</code> 中对应的配置，替换filename中指向的对应资源文件(ps: 实例中资源并没有符合尺寸要求，替换时需注意要求的尺寸)
----
-* 导航 react-navigation
-* 字体图标(TODO)
+
+### 字体图标
+* 字体图标 [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
+
 * 数据流框架(TODO)
 * http(TODO)
 * 错误处理(TODO)
+* eslint 规则(TODO)
 * UI(TODO)(可选)
