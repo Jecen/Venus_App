@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, Text, Button, AsyncStorage } from 'react-native';
 import NavTitle from '../../components/navTitle'
-import RCTDeviceEventEmitter from 'RCTDeviceEventEmitter' 
+import RCTDeviceEventEmitter from 'RCTDeviceEventEmitter'
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 export default class HomeScreen extends React.Component {
   constructor () {
@@ -63,6 +65,9 @@ export default class HomeScreen extends React.Component {
             name: '游客'
           })}
         />
+        <Icon.Button name="facebook" backgroundColor="#3b5998">
+          <Text style={{fontFamily: 'Arial', fontSize: 15}}>Login with Facebook</Text>
+        </Icon.Button>
         <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
       </View>
     );
