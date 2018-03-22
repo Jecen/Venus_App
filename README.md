@@ -1,6 +1,43 @@
 # Venus App
 
 ## 配置
+### 导航
+* 导航 [react-navigation](https://github.com/react-navigation/react-navigation)
+
+目前导航针对需登录的情况,在<code>root/src/route/index.js</code>中做了默认的路由设置 如下：
+<pre>
+import { StackNavigator, TabNavigator, SwitchNavigator } from 'react-navigation';
+import React from 'react'
+// app views
+import HomeScreen from '../views/home'
+import UserScreen from '../views/user'
+
+// login & register views
+import LoginScreen from '../views/login'
+
+// tools views
+import AuthLoadingScreen from '../views/tools/AuthLoadingScreen'
+
+const AppStack = StackNavigator(
+  {
+    Home: HomeScreen,
+    User: UserScreen
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+  });
+const AuthStack = StackNavigator({ login: LoginScreen }, { mode: 'modal', headerMode: 'none' });
+
+export default SwitchNavigator(
+  {
+    App: AppStack,
+    AuthLoading: AuthLoadingScreen,
+    Auth: AuthStack,
+  }, {
+    initialRouteName: 'AuthLoading'
+  });
+</pre>
 ### 启动页
 * 启动页  [react-native-slpash-screen](https://github.com/crazycodeboy/react-native-splash-screen)
 

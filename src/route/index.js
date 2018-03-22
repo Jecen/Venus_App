@@ -1,7 +1,6 @@
 
 import { StackNavigator, TabNavigator, SwitchNavigator } from 'react-navigation';
 import React from 'react'
-import { Image } from 'react-native'
 // app views
 import HomeScreen from '../views/home'
 import UserScreen from '../views/user'
