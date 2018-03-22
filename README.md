@@ -4,7 +4,8 @@
 ### 导航
 * 导航 [react-navigation](https://github.com/react-navigation/react-navigation)
 
-目前导航针对需登录的情况,在<code>root/src/route/index.js</code>中做了默认的路由设置 如下：
+目前导航针对需登录的情况,在<code>root/src/route/index.js</code>中做了默认的路由设置 
+如下：
 <pre>
 import { StackNavigator, TabNavigator, SwitchNavigator } from 'react-navigation';
 import React from 'react'
@@ -44,7 +45,8 @@ export default SwitchNavigator(
 #### android 
 *  替换 <code>root/android/app/src/main/res/drawable</code> 文件下的 <code>launch_screen.png</code> 资源 (注意资源尺寸的要求)
 #### ios
-* 替换 <code>root/ios/[APP_NAME]/Images.xcassets/LaunchImage.launchimage</code>中的<code>launch_screen.png</code>并打开各<code>*.launchimage</code>文件下的<code>Contents.json</code>核实filename是否指向了对应的资源名(ps: 实例中资源并没有符合尺寸要求，替换时需注意要求的尺寸)
+* 打开 <code>root/ios/[APP_NAME]/Images.xcassets/LaunchImage(-[x]).launchimage</code> 下的 <code>Contents.json</code> 文件
+* 根据 <code>Contents.json</code> 中对应的配置，替换filename中指向的对应资源文件(ps: 实例中资源并没有符合尺寸要求，替换时需注意要求的尺寸)
 ---
 * 导航 react-navigation
 * 字体图标(TODO)
