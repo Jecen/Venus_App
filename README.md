@@ -54,5 +54,6 @@ export default SwitchNavigator(
 * 数据流框架(TODO)
 * http(TODO)
 * 错误处理(TODO)
-* eslint 规则(TODO)
+* eslint 规则(Finsih)
 * UI(TODO)(可选)
+* android 后台服务(Finish)
