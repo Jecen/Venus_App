@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import NavTitle from '../../components/navTitle'
+import PropTypes from 'prop-types';
+import NavTitle from '../../components/navTitle';
 
 export default class UserScreen extends React.Component {
-
   static navigationOptions = {
     title: 'User',
-    headerTitle: <NavTitle title='User' />,
+    headerTitle: <NavTitle title="User" />,
     headerStyle: {
       backgroundColor: '#f4511e',
     },
@@ -15,6 +15,14 @@ export default class UserScreen extends React.Component {
       fontWeight: 'bold',
     },
   };
+
+  static propTypes = {
+    navigation: PropTypes.object,
+  }
+
+  static defaultProps = {
+    navigation: {},
+  }
 
   render() {
     const { params } = this.props.navigation.state;

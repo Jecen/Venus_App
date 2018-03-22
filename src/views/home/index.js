@@ -1,21 +1,15 @@
 import React from 'react';
 import { View, Text, Button, AsyncStorage } from 'react-native';
-import NavTitle from '../../components/navTitle'
-import RCTDeviceEventEmitter from 'RCTDeviceEventEmitter'
+import PropTypes from 'prop-types';
 import { createIconSet } from 'react-native-vector-icons';
-
+import NavTitle from '../../components/navTitle';
+import iconMap from '../../assets/font/iconfontMap.json';
+import eventHandle from '../../assets/tools/eventEmiitter';
 
 export default class HomeScreen extends React.Component {
-  constructor () {
-    super();
-    this.state = {
-      name: ''
-    }
-  }
-
   static navigationOptions = {
     title: 'Home',
-    headerTitle: <NavTitle title='Home' />,
+    headerTitle: <NavTitle title="Home" />,
     headerStyle: {
       backgroundColor: '#f4511e',
     },
@@ -25,51 +19,70 @@ export default class HomeScreen extends React.Component {
     },
   };
 
-  _signOutAsync = async () => {
+  static propTypes = {
+    navigation: PropTypes.object,
+  }
+
+  static defaultProps = {
+    navigation: {},
+  }
+
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+    };
+  }
+
+  componentDidMount() {
+    this.listener = eventHandle.on('AsyncStorageUpdate', (value) => {
+      // 接受到通知后的处理
+      if (value === 'testTXT') {
+        this.bootstrapAsync();
+      }
+    });
+  }
+
+  signOutAsync = async () => {
     await AsyncStorage.clear();
-    this.props.navigation.navigate('Auth');
+    const { navigate } = this.props.navigation;
+    navigate('Auth');
   };
 
-  _bootstrapAsync = async () => {
+  bootstrapAsync = async () => {
     const testTXT = await AsyncStorage.getItem('testTXT');
     this.setState({
-      name: testTXT ? testTXT : '-'
-    })
+      name: testTXT || '-',
+    });
     // This will switch to the App screen or Auth screen and this loading
     // screen will be unmounted and thrown away.
   };
 
-  componentDidMount() {
-    this.listener = RCTDeviceEventEmitter.addListener('AsyncStorageUpdate', (value) => {
-      // 接受到通知后的处理
-      if (value === 'testTXT') {
-        this._bootstrapAsync()
-      }
-    });
-
-    
-  }
   render() {
-    const { navigate } = this.props.navigation
-    const fontMap = require('../../assets/font/iconfontMap.json')
+    const { navigate } = this.props.navigation;
+    const fontMap = iconMap;
     const IconFont = createIconSet(fontMap, 'iconfont');
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Home Screen {this.state.name}</Text>
         <Button
           title="管理员"
-          onPress={() => navigate('User', {
-            name: '管理员'
-          })}
+          onPress={() =>
+            navigate('User', {
+              name: '管理员',
+            })
+          }
         />
         <Button
           title="游客"
-          onPress={() => navigate('User', {
-            name: '游客'
-          })}
+          onPress={() =>
+            navigate('User', {
+              name: '游客',
+            })
+          }
         />
-        <IconFont name="text" color="#113378"></IconFont>
-        <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
+        <IconFont name="text" color="#113378" />
+        <Button title="Actually, sign me out :)" onPress={this.signOutAsync} />
       </View>
     );
   }

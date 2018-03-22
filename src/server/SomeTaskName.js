@@ -1,10 +1,9 @@
-import { AsyncStorage } from 'react-native'
-import RCTDeviceEventEmitter from 'RCTDeviceEventEmitter' 
+import { AsyncStorage } from 'react-native';
+import eventHandle from '../assets/tools/eventEmiitter';
 
 module.exports = async (data) => {
   // do stuff
-  AsyncStorage.setItem('testTXT', data.currVolume + '', () => {
-    RCTDeviceEventEmitter.emit('AsyncStorageUpdate', 'testTXT'); 
+  AsyncStorage.setItem('testTXT', `${data.currVolume}`, () => {
+    eventHandle.emit('AsyncStorageUpdate', 'testTXT');
   });
-  
 };
