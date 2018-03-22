@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Button, AsyncStorage } from 'react-native';
 import NavTitle from '../../components/navTitle'
 import RCTDeviceEventEmitter from 'RCTDeviceEventEmitter'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { createIconSet } from 'react-native-vector-icons';
 
 
 export default class HomeScreen extends React.Component {
@@ -46,10 +46,13 @@ export default class HomeScreen extends React.Component {
         this._bootstrapAsync()
       }
     });
-  }
 
+    
+  }
   render() {
     const { navigate } = this.props.navigation
+    const fontMap = require('../../assets/font/iconfontMap.json')
+    const IconFont = createIconSet(fontMap, 'iconfont');
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Home Screen {this.state.name}</Text>
@@ -65,9 +68,7 @@ export default class HomeScreen extends React.Component {
             name: '游客'
           })}
         />
-        <Icon.Button name="facebook" backgroundColor="#3b5998">
-          <Text style={{fontFamily: 'Arial', fontSize: 15}}>Login with Facebook</Text>
-        </Icon.Button>
+        <IconFont name="text" color="#113378"></IconFont>
         <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
       </View>
     );
