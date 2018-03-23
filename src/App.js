@@ -1,8 +1,7 @@
-
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
-
 import SplashScreen from 'react-native-splash-screen';
+
 import RootStack from './route';
 import serviceFun from './server/SomeTaskName';
 

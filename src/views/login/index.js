@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, Button, AsyncStorage } from 'react-native';
+import Message from '../../assets/tools/messageHandle';
+import http from '../../http/index';
 
 export default class LoginScreen extends React.Component {
   static propTypes = {
@@ -11,9 +13,12 @@ export default class LoginScreen extends React.Component {
     navigation: {},
   }
 
-  signOutAsync = async () => {
+  login = async () => {
+    const { navigate } = this.props.navigation;
     await AsyncStorage.setItem('userToken', 'abc');
-    this.props.navigation.navigate('Home');
+    Message.tip('go to home');
+    await http.post('/aaa/ccc');
+    navigate('Home');
   }
 
   render() {
@@ -27,7 +32,7 @@ export default class LoginScreen extends React.Component {
           }}
       >
         <Text>Login Screen</Text>
-        <Button title="Sign in!" onPress={this.signOutAsync} />
+        <Button title="Sign in!" onPress={this.login} />
       </View>
     );
   }

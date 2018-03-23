@@ -7,7 +7,7 @@
 目前导航针对需登录的情况,在<code>root/src/route/index.js</code>中做了默认的路由设置 
 如下：
 <pre>
-import { StackNavigator, TabNavigator, SwitchNavigator } from 'react-navigation';
+import { StackNavigator, SwitchNavigator } from 'react-navigation';
 import React from 'react'
 // app views
 import HomeScreen from '../views/home'
@@ -48,12 +48,13 @@ export default SwitchNavigator(
 * 打开 <code>root/ios/[APP_NAME]/Images.xcassets/LaunchImage(-[x]).launchimage</code> 下的 <code>Contents.json</code> 文件
 * 根据 <code>Contents.json</code> 中对应的配置，替换filename中指向的对应资源文件(ps: 实例中资源并没有符合尺寸要求，替换时需注意要求的尺寸)
 
-### 字体图标
+---
 * 字体图标 [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
-
-* 数据流框架(TODO)
-* http(TODO)
-* 错误处理(TODO)
 * eslint 规则(Finsih)
-* UI(TODO)(可选)
 * android 后台服务(Finish)
+* 消息/错误处理 [react-native-root-toast](https://github.com/magicismight/react-native-root-toast) (Finish)
+* http [tfetch](https://www.npmjs.com/package/tfetch) (Finish)
+---
+* 数据流框架(TODO)
+* UI(TODO)(可选)
+* 视频播放(TODO)
